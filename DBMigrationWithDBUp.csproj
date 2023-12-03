@@ -8,15 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="MigrationScripts\Script0001 - Add ScriptVersion Table.sql" />
-    <None Remove="MigrationScripts\Script0002 - Add User Table.sql" />
-    <None Remove="mock\common\Script0001 - Users.sql" />
-    <None Remove="Mock\Dev\Script0001 - Users.sql" />
-    <None Remove="Mock\Uat\Script0001 - Users.sql" />
-  </ItemGroup>
-
-
-  <ItemGroup>
     <PackageReference Include="dbup-sqlserver" Version="5.0.37" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="8.0.0" />
@@ -35,10 +26,12 @@
 	<EmbeddedResource Include="Mock\Common\*.sql" />
 	<EmbeddedResource Include="Mock\Dev\*.sql" />
 	<EmbeddedResource Include="Mock\Uat\*.sql" />
+	<EmbeddedResource Include="Seed\*.sql" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Mock\Common\" />
+    <Folder Include="Seed\" />
   </ItemGroup>
 
 </Project>

@@ -22,10 +22,6 @@ public static class DatabaseUpgrader
             }
             var sw = Stopwatch.StartNew();
 
-            var mockResult = createMockData ? RunDbActivity("Mock Data Creation", () => Mocker.CreateMockData(connectionString)) : null;
-            Console.WriteLine($"Mock Data Creation took {sw.Elapsed.TotalSeconds} seconds");
-            sw.Restart();
-
             var dbScriptVersioner = new DatabaseScriptVersioner(connectionString);
             if (dbScriptVersioner.IsDatabaseAtCurrentScriptVersion())
             {
@@ -38,8 +34,16 @@ public static class DatabaseUpgrader
             Console.WriteLine($"Migration took {sw.Elapsed.TotalSeconds} seconds");
             sw.Restart();
 
+            var mockResult = createMockData ? RunDbActivity("Mock Data Creation", () => Mocker.CreateMockData(connectionString)) : null;
+            Console.WriteLine($"Mock Data Creation took {sw.Elapsed.TotalSeconds} seconds");
+            sw.Restart();
+
+            var seedResult = RunDbActivity("Seed Data Creation", () => Seeder.Seed(connectionString));
+            Console.WriteLine($"Seed Data Creation took {sw.Elapsed.TotalSeconds} seconds");
+            sw.Restart();
 
             if (migrationResult.Successful 
+                && seedResult.Successful
                 && (!createMockData || mockResult is { Successful: true}))
             {
                 Console.ForegroundColor = ConsoleColor.Green;
