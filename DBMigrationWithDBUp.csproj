@@ -30,7 +30,19 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="SchemaScripts\DropProgrammabilityObjects.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="SchemaScripts\DropProgrammabilityObjects.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Mock\Common\" />
+    <Folder Include="SchemaScripts\Views\" />
+    <Folder Include="SchemaScripts\TVFs\" />
+    <Folder Include="SchemaScripts\StoredProcedures\" />
+    <Folder Include="SchemaScripts\Shared\" />
     <Folder Include="Seed\" />
   </ItemGroup>
 
