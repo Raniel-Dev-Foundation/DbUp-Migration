@@ -1,0 +1,18 @@
+{
+    "profiles": {
+        "Development": {
+            "commandName": "Project",
+            "environmentVariables": {
+                "DOTNET_ENVIRONMENT": "Development",
+                "ENVIRONMENT": "Dev"
+            }
+        },
+        "Local": {
+            "commandName": "Project",
+            "environmentVariables": {
+                "DOTNET_ENVIRONMENT": "Local",
+                "ENVIRONMENT": "local"
+            }
+        }
+    }
+}

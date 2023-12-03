@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="MigrationScripts\Script0001 - Add ScriptVersion Table.sql" />
+    <None Remove="MigrationScripts\Script0002 - Add User Table.sql" />
+    <None Remove="mock\common\Script0001 - Users.sql" />
+    <None Remove="Mock\Dev\Script0001 - Users.sql" />
+    <None Remove="Mock\Uat\Script0001 - Users.sql" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="dbup-sqlserver" Version="5.0.37" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
+    <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="MigrationScripts\*.sql" />
+	<EmbeddedResource Include="Mock\Common\*.sql" />
+	<EmbeddedResource Include="Mock\Dev\*.sql" />
+	<EmbeddedResource Include="Mock\Uat\*.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Mock\Common\" />
+  </ItemGroup>
+
+</Project>

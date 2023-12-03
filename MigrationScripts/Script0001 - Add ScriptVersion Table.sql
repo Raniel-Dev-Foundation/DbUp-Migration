@@ -1,0 +1,4 @@
+﻿CREATE TABLE ScriptVersion
+(
+	Hash VARCHAR(64) NOT NULL
+)
